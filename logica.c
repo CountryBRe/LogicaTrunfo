@@ -5,12 +5,12 @@ int main() {
         char estado[30];
         char codigo[10];
         char nome_cidade[30];
-        unsigned long int populacao;
-        float area;
-        float pib;
-        int pontos_turisticos;
-        float densidade_populacional;
-        float pib_pc;
+        unsigned long int populacao; // População
+        float area; // Área em km²
+        float pib; // PIB em bilhões
+        int pontos_turisticos; // Pontos turisticos
+        float densidade_populacional; // Densidade populacional
+        float pib_pc; // Pib per capita
     };
 
     struct Carta carta1 = {"Santa Catarina", "SC01", "Florianópolis", 7600000, 95730.0, 446.6, 300};
