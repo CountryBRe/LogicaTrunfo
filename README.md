@@ -1,39 +1,61 @@
-# LogicaTrunfo
+🃏 Super Trunfo em C – Desafio Nível Mestre
 
-Super Trunfo - Nível Aventureiro Este projeto é uma simulação do jogo Super Trunfo, adaptado para comparar países, estados ou capitais com base em atributos numéricos.
+Esse projeto é o resultado de um desafio de programação em C. Aqui, o jogador compara duas cartas de estados brasileiros (Santa Catarina e Paraná), escolhendo dois atributos diferentes para ver quem vence a rodada. A ideia é aplicar tudo o que foi aprendido sobre if, else, switch, operador ternário, menus interativos e lógica de decisão.
 
-Ao executar, o programa exibe um menu com opções de escolha:
+🎯 O que o programa faz
 
-1 - População
+Mostra os dados de duas cartas (já cadastradas no código).
 
-2 - Área
+O jogador escolhe dois atributos diferentes para comparar.
 
-3 - PIB
+Cada atributo é comparado de acordo com a sua regra (maior ou menor valor).
 
-4 - Pontos turísticos
+Soma os dois atributos e define o vencedor.
 
-5 - Densidade populacional
+Mostra todos os detalhes da comparação: valores, soma e quem venceu.
 
-6 - PIB per capita
+Em caso de empate na soma, exibe "Empate!".
 
-O usuário digita o número correspondente ao atributo desejado. O programa então compara os dois países e exibe o resultado, com destaque em verde para o vencedor e vermelho para o perdedor.
+📊 Atributos disponíveis
 
-Atributos disponíveis:
+Opção	Atributo	Regra de vitória
 
-1 População - Maior valor vence
+1	População	Maior valor
 
-2 Área - Maior valor vence
+2	Área	Maior valor
 
-3 PIB Maior - valor vence
+3	PIB	Maior valor
 
-4 Pontos turísticos - Maior valor vence
+4	Pontos turísticos	Maior valor
 
-5 Densidade populacional - Menor valor vence
+5	Densidade populacional	Menor valor vence
 
-6 PIB per capita - Maior valor vence
+6	PIB per capita	Maior valor
 
-Observações Os dados são fixos no código (dois estados e capital).
+✨ Detalhes legais do projeto
+Usa switch com default para tratar entradas inválidas.
 
-As cores são usadas para facilitar a visualização do resultado.
+Impede a escolha do mesmo atributo duas vezes.
 
-Lógica implementada com switch e if-else.
+Usa o operador ternário para agilizar decisões simples.
+
+Usa cores no terminal com ANSI para destacar vitórias e derrotas.
+
+Códigos organizados e com comentários para facilitar leitura e manutenção.
+
+📌 Observações
+As cartas são fixas no código (não precisa cadastrar nada).
+
+Comparação sempre entre duas cartas.
+
+Projeto ideal para treinar lógica de decisão em C.
+
+👨‍💻 Feito por: Rodrigo Gomes
+
+📘 Disciplina: Introdução à Programação de Computadores
+
+🏫 Faculdade: Estácio de Sá
+
+👨‍🏫 Professor: Sérgio Cardoso
+
+
