@@ -33,6 +33,7 @@ Opção	Atributo	Regra de vitória
 6 -	PIB per capita	Maior valor
 
 ✨ Detalhes legais do projeto
+
 Usa switch com default para tratar entradas inválidas.
 
 Impede a escolha do mesmo atributo duas vezes.
