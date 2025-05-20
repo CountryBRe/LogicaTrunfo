@@ -1,170 +1,129 @@
 #include <stdio.h>
 
 int main() {
-    // Estrutura representando uma carta do Super Trunfo
     struct Carta {
         char estado[30];
         char codigo[10];
         char nome_cidade[30];
         unsigned long int populacao;
-        float area; // Em km²
-        float pib;  // Em bilhões
-        int pontos_turisticos; // Pontos turisticos
-        float densidade_populacional; // Densidade populacional
-        float pib_pc; // Pib per capita
+        float area;
+        float pib;
+        int pontos_turisticos;
+        float densidade_populacional;
+        float pib_pc;
     };
 
-    // Carta 1 - Santa Catarina
-    struct Carta carta1;
-    sprintf(carta1.estado, "Santa Catarina");
-    sprintf(carta1.codigo, "SC01");
-    sprintf(carta1.nome_cidade, "Florianópolis");
-    carta1.populacao = 7600000;
-    carta1.area = 95730.0;
-    carta1.pib = 446.6;
-    carta1.pontos_turisticos = 300;
+    struct Carta carta1 = {"Santa Catarina", "SC01", "Florianópolis", 7600000, 95730.0, 446.6, 300};
     carta1.densidade_populacional = carta1.populacao / carta1.area;
     carta1.pib_pc = (carta1.pib * 1000000000) / carta1.populacao;
 
-    // Carta 2 - Paraná
-    struct Carta carta2;
-    sprintf(carta2.estado, "Paraná");
-    sprintf(carta2.codigo, "PR01");
-    sprintf(carta2.nome_cidade, "Curitiba");
-    carta2.populacao = 11824665;
-    carta2.area = 199307.0;
-    carta2.pib = 564.2;
-    carta2.pontos_turisticos = 200;
+    struct Carta carta2 = {"Paraná", "PR01", "Curitiba", 11824665, 199307.0, 564.2, 200};
     carta2.densidade_populacional = carta2.populacao / carta2.area;
     carta2.pib_pc = (carta2.pib * 1000000000) / carta2.populacao;
 
-    // Exibir status das cartas
+    float valor1_carta1 = 0, valor1_carta2 = 0;
+    float valor2_carta1 = 0, valor2_carta2 = 0;
+    int atributo1 = -1, atributo2 = -1;
+
     printf("=== STATUS DAS CARTAS ===\n\n");
+    printf("[Carta 1] %s (%s)\nPopulação: %lu\nÁrea: %.2f km²\nPIB: %.2f bilhões\nPontos turísticos: %d\nDensidade: %.2f hab/km²\nPIB per capita: %.2f\n\n",
+        carta1.nome_cidade, carta1.estado, carta1.populacao, carta1.area, carta1.pib, carta1.pontos_turisticos, carta1.densidade_populacional, carta1.pib_pc);
 
-    printf("[Carta 1] %s (%s)\n", carta1.nome_cidade, carta1.estado);
-    printf("População: %lu\n", carta1.populacao);
-    printf("Área: %.2f km²\n", carta1.area);
-    printf("PIB: %.2f bilhões\n", carta1.pib);
-    printf("Pontos turísticos: %d\n", carta1.pontos_turisticos);
-    printf("Densidade populacional: %.2f hab/km²\n", carta1.densidade_populacional);
-    printf("PIB per capita: %.2f\n\n", carta1.pib_pc);
+    printf("[Carta 2] %s (%s)\nPopulação: %lu\nÁrea: %.2f km²\nPIB: %.2f bilhões\nPontos turísticos: %d\nDensidade: %.2f hab/km²\nPIB per capita: %.2f\n\n",
+        carta2.nome_cidade, carta2.estado, carta2.populacao, carta2.area, carta2.pib, carta2.pontos_turisticos, carta2.densidade_populacional, carta2.pib_pc);
 
-    printf("[Carta 2] %s (%s)\n", carta2.nome_cidade, carta2.estado);
-    printf("População: %lu\n", carta2.populacao);
-    printf("Área: %.2f km²\n", carta2.area);
-    printf("PIB: %.2f bilhões\n", carta2.pib);
-    printf("Pontos turísticos: %d\n", carta2.pontos_turisticos);
-    printf("Densidade populacional: %.2f hab/km²\n", carta2.densidade_populacional);
-    printf("PIB per capita: %.2f\n\n", carta2.pib_pc);
+    // Primeiro atributo
+    printf("Escolha o primeiro atributo:\n");
+    printf("1 - População\n2 - Área\n3 - PIB\n4 - Pontos turísticos\n5 - Densidade populacional\n6 - PIB per capita\n> ");
+    scanf("%d", &atributo1);
 
-    // Menu para escolhas de atributos
-    int opcao;
-    printf("=== MENU DE COMPARAÇÃO ===\n");
-    printf("Escolha algum atributo para comparar:\n");
-    printf("1 - População\n");
-    printf("2 - Área\n");
-    printf("3 - PIB\n");
-    printf("4 - Pontos turísticos\n");
-    printf("5 - Densidade populacional\n");
-    printf("6 - PIB per capita\n");
-    printf("Opção: ");
-    scanf("%d", &opcao);
-
-    printf("\n=== COMPARAÇÃO ENTRE CARTAS ===\n");
-
-    switch (opcao) {
-        case 1:
-            printf("Atributo: População\n");
-            printf("%s: %lu\n", carta1.nome_cidade, carta1.populacao);
-            printf("%s: %lu\n", carta2.nome_cidade, carta2.populacao);
-            if (carta1.populacao > carta2.populacao) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.populacao > carta1.populacao) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
+    // Segundo atributo (exclui o anterior)
+    do {
+        printf("\nEscolha o segundo atributo (diferente do primeiro):\n");
+        for (int i = 1; i <= 6; i++) {
+            if (i != atributo1) {
+                switch(i) {
+                    case 1: printf("%d - População\n", i); break;
+                    case 2: printf("%d - Área\n", i); break;
+                    case 3: printf("%d - PIB\n", i); break;
+                    case 4: printf("%d - Pontos turísticos\n", i); break;
+                    case 5: printf("%d - Densidade populacional\n", i); break;
+                    case 6: printf("%d - PIB per capita\n", i); break;
+                }
             }
-            break;
+        }
+        printf("> ");
+        scanf("%d", &atributo2);
+    } while (atributo2 == atributo1 || atributo2 < 1 || atributo2 > 6);
 
-        case 2:
-            printf("Atributo: Área\n");
-            printf("%s: %.2f km²\n", carta1.nome_cidade, carta1.area);
-            printf("%s: %.2f km²\n", carta2.nome_cidade, carta2.area);
-            if (carta1.area > carta2.area) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.area > carta1.area) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
-            }
-            break;
+    // Função auxiliar para pegar valores
+    float get_valor(struct Carta c, int atributo) {
+        switch (atributo) {
+            case 1: return (float)c.populacao;
+            case 2: return c.area;
+            case 3: return c.pib;
+            case 4: return (float)c.pontos_turisticos;
+            case 5: return c.densidade_populacional;
+            case 6: return c.pib_pc;
+            default: return 0;
+        }
+    }
 
-        case 3:
-            printf("Atributo: PIB\n");
-            printf("%s: %.2f bilhões\n", carta1.nome_cidade, carta1.pib);
-            printf("%s: %.2f bilhões\n", carta2.nome_cidade, carta2.pib);
-            if (carta1.pib > carta2.pib) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.pib > carta1.pib) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
-            }
-            break;
+    // Atribuir valores dos atributos
+    valor1_carta1 = get_valor(carta1, atributo1);
+    valor1_carta2 = get_valor(carta2, atributo1);
+    valor2_carta1 = get_valor(carta1, atributo2);
+    valor2_carta2 = get_valor(carta2, atributo2);
 
-        case 4:
-            printf("Atributo: Pontos turísticos\n");
-            printf("%s: %d\n", carta1.nome_cidade, carta1.pontos_turisticos);
-            printf("%s: %d\n", carta2.nome_cidade, carta2.pontos_turisticos);
-            if (carta1.pontos_turisticos > carta2.pontos_turisticos) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.pontos_turisticos > carta1.pontos_turisticos) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
-            }
-            break;
+    // Mostrar os atributos escolhidos
+    char* nomes_atributos[] = {
+        "", "População", "Área", "PIB", "Pontos turísticos", "Densidade populacional", "PIB per capita"
+    };
 
-        case 5:
-            printf("Atributo: Densidade populacional\n");
-            printf("%s: %.2f hab/km²\n", carta1.nome_cidade, carta1.densidade_populacional);
-            printf("%s: %.2f hab/km²\n", carta2.nome_cidade, carta2.densidade_populacional);
-            if (carta1.densidade_populacional < carta2.densidade_populacional) {
-                printf("\n\033[0;32m%s venceu!\033[0m (menor densidade)\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.densidade_populacional < carta1.densidade_populacional) {
-                printf("\n\033[0;32m%s venceu!\033[0m (menor densidade)\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
-            }
-            break;
+    printf("\n=== COMPARAÇÃO ===\n\n");
+    printf("Atributo 1: %s\n", nomes_atributos[atributo1]);
+    printf("%s: %.2f\n", carta1.nome_cidade, valor1_carta1);
+    printf("%s: %.2f\n\n", carta2.nome_cidade, valor1_carta2);
 
-        case 6:
-            printf("Atributo: PIB per capita\n");
-            printf("%s: %.2f\n", carta1.nome_cidade, carta1.pib_pc);
-            printf("%s: %.2f\n", carta2.nome_cidade, carta2.pib_pc);
-            if (carta1.pib_pc > carta2.pib_pc) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta2.nome_cidade);
-            } else if (carta2.pib_pc > carta1.pib_pc) {
-                printf("\n\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
-                printf("\033[0;31m%s perdeu.\033[0m\n", carta1.nome_cidade);
-            } else {
-                printf("\nEmpate!\n");
-            }
-            break;
+    printf("Atributo 2: %s\n", nomes_atributos[atributo2]);
+    printf("%s: %.2f\n", carta1.nome_cidade, valor2_carta1);
+    printf("%s: %.2f\n\n", carta2.nome_cidade, valor2_carta2);
 
-        default:
-            printf("\n\033[0;31mOpção inválida! Por favor, escolha entre 1 e 6.\033[0m\n");
+    // Comparações individuais
+    int pontos_carta1 = 0, pontos_carta2 = 0;
+
+    // Regras para o primeiro atributo
+    if (atributo1 == 5) { // densidade - menor vence
+        pontos_carta1 += valor1_carta1 < valor1_carta2 ? 1 : 0;
+        pontos_carta2 += valor1_carta2 < valor1_carta1 ? 1 : 0;
+    } else {
+        pontos_carta1 += valor1_carta1 > valor1_carta2 ? 1 : 0;
+        pontos_carta2 += valor1_carta2 > valor1_carta1 ? 1 : 0;
+    }
+
+    // Segundo atributo
+    if (atributo2 == 5) { // densidade - menor vence
+        pontos_carta1 += valor2_carta1 < valor2_carta2 ? 1 : 0;
+        pontos_carta2 += valor2_carta2 < valor2_carta1 ? 1 : 0;
+    } else {
+        pontos_carta1 += valor2_carta1 > valor2_carta2 ? 1 : 0;
+        pontos_carta2 += valor2_carta2 > valor2_carta1 ? 1 : 0;
+    }
+
+    float soma1 = valor1_carta1 + valor2_carta1;
+    float soma2 = valor1_carta2 + valor2_carta2;
+
+    printf("Soma dos atributos:\n");
+    printf("%s: %.2f\n", carta1.nome_cidade, soma1);
+    printf("%s: %.2f\n\n", carta2.nome_cidade, soma2);
+
+    printf("Resultado final:\n");
+    if (soma1 > soma2) {
+        printf("\033[0;32m%s venceu!\033[0m\n", carta1.nome_cidade);
+    } else if (soma2 > soma1) {
+        printf("\033[0;32m%s venceu!\033[0m\n", carta2.nome_cidade);
+    } else {
+        printf("\033[1;33mEmpate!\033[0m\n");
     }
 
     return 0;
