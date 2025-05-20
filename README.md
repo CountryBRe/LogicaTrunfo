@@ -20,17 +20,17 @@ Em caso de empate na soma, exibe "Empate!".
 
 Opção	Atributo	Regra de vitória
 
-1	População	Maior valor
+1 - População	Maior valor
 
-2	Área	Maior valor
+2 - Área	Maior valor
 
-3	PIB	Maior valor
+3 -	PIB	Maior valor
 
-4	Pontos turísticos	Maior valor
+4 -	Pontos turísticos	Maior valor
 
-5	Densidade populacional	Menor valor vence
+5 -	Densidade populacional	Menor valor vence
 
-6	PIB per capita	Maior valor
+6 -	PIB per capita	Maior valor
 
 ✨ Detalhes legais do projeto
 Usa switch com default para tratar entradas inválidas.
